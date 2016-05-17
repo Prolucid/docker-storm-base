@@ -5,13 +5,14 @@ MAINTAINER Daniel Covello
 CMD ["/sbin/my_init"] 
 
 # Install storm dependencies +utilities
-RUN apt-get update && apt-get install -y unzip openjdk-7-jre-headless wget python
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+RUN add-apt-repository ppa:openjdk-r/ppa
+RUN sudo apt-get update && sudo apt-get install -y openjdk-8-jdk unzip wget python
+#ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # Install Storm
-RUN wget -q -O - http://mirrors.sonic.net/apache/storm/apache-storm-0.10.0/apache-storm-0.10.0.tar.gz | tar -xzf - -C /opt
+RUN wget -q -O - http://apache.mirror.gtcomm.net/storm/apache-storm-1.0.1/apache-storm-1.0.1.tar.gz | tar -xzf - -C /opt
 
-ENV STORM_HOME /opt/apache-storm-0.10.0
+ENV STORM_HOME /opt/apache-storm-1.0.1
 RUN groupadd storm; useradd --gid storm --home-dir /home/storm --create-home --shell /bin/bash storm; chown -R storm:storm $STORM_HOME; mkdir /var/log/storm ; chown -R storm:storm /var/log/storm
 
 RUN ln -s $STORM_HOME/bin/storm /usr/bin/storm
