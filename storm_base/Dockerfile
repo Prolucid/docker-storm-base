@@ -6,7 +6,7 @@ CMD ["/sbin/my_init"]
 
 # Install storm dependencies +utilities
 RUN add-apt-repository ppa:openjdk-r/ppa
-RUN sudo apt-get update && sudo apt-get install -y openjdk-8-jdk unzip wget python
+RUN apt-get update && apt-get install -y openjdk-8-jdk unzip wget python
 #ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # Install Storm
