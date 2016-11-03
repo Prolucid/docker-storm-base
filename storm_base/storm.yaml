@@ -26,6 +26,7 @@ storm.local.dir: "storm-local"
 storm.log.dir: "/var/log/storm/"
 storm.log4j2.conf.dir: "log4j2"
 storm.zookeeper.servers:
+%ZOOKEEPER_SERVERS%
 storm.zookeeper.port: 2181
 storm.zookeeper.root: "/storm"
 storm.zookeeper.session.timeout: 20000
